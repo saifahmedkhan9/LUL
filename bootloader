@@ -78,3 +78,4 @@ To install the package, you’ll use the dpkg utility, which is the internal pac
     sudo dpkg -i packagename.deb
 
 The package should now be installed, providing it’s compatible with your system.
+some data added by me -saif
