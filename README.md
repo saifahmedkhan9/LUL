@@ -1,5 +1,5 @@
 # Linux_lab
 ---------------------
-This will contain steps to make a bootloader which will print Hello World!!..
+This folder contains the Linux_Lab Assignment we had done in our college.
 
 
