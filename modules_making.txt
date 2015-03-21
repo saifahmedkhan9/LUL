@@ -1,0 +1,22 @@
+How to make modules :
+
+1) First make 'filename.c' file and write code.
+
+2) Then create a file named 'Makefile'.
+
+3) Run 'make' command.
+
+4)After running 'make' command you can see many files with different extension.
+
+5)now run:
+			insmod filename.ko arguments(if given in filename.c file)
+
+6)To see Output :
+				'dmesg and press enter' 
+				and then see at last lines 
+
+7)to remove modules:
+					rmmod filename
+
+
+For Ref Go To : http://www.tldp.org/LDP/lkmpg/2.6/html/lkmpg.html#AEN27
