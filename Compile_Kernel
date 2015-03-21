@@ -9,7 +9,7 @@ Steps To Compile Kernel :
 	Simply right click on tar file and then extract.				
 
 3)Go inside linux Folder and run :
-									make menuconfig
+					make menuconfig
 
 	if menu based gui didn't comes then install ncurses using :
 		sudo apt-get install libncurss5-dev libncursesw5-dev
@@ -17,17 +17,17 @@ Steps To Compile Kernel :
 4)Now modify your modules function like disabling networking or disabling your keyboard etc then save and exit.
 
 5)Now run : 
-			make -j 8
+		make -j 8
 	It will take 1-2 hours (Approx.) to compile your kernel.
 
 6) After that run :
-					make modules
+			make modules
 
 7)Then :
-		sudo make modules_install
+	sudo make modules_install
 
 8)At last  run:
-				sudo make install
+		sudo make install
 
 9)Now simply reboot your system and then go to Advance option to see your compiled Kernel version.
 
