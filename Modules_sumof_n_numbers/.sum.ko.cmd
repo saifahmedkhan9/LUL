@@ -1,0 +1,1 @@
+cmd_/home/saif/Modules_sumof_n_numbers/sum.ko := ld -r -m elf_i386 -T ./scripts/module-common.lds --build-id  -o /home/saif/Modules_sumof_n_numbers/sum.ko /home/saif/Modules_sumof_n_numbers/sum.o /home/saif/Modules_sumof_n_numbers/sum.mod.o
