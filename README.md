@@ -1,6 +1,6 @@
 # Linux_lab
 ---------------------
-This folder contains the Linux_Lab Assignment done in college.
+####This folder contains the Linux_Lab Assignment done in college.
 
 1. How to Compile Kernel.
 2. How to make Modules.
