@@ -1,0 +1,33 @@
+1. Install the DHCP server by typing the following command in terminal-
+		sudo apt-get install isc-dhcp-server
+
+2. After installing the DHCP server we need to make changes to the following configuration files-
+
+	a)  First open the isc-dhcp-server file which is located in 
+				/etc/default/isc-dhcp-server.
+   		After that add the interfaces to which you want to run the DHCP server, for ethernet which we use eth0.
+		You can always check for the interface you want to apply by opening the network manager.
+
+	b) After this open the dhcpd.conf which is  located in 
+				/etc/dhcp/dhcpd.conf
+	   Now you have to define lease time ( default and max lease time ) optional  domain name and domain name servers , the range of IP addresses that you want DHCP server to assign to hosts, the network address, the subnet mask etc.
+	   HINT: Look for something like: "A slightly different configuration for an internal subnet"
+		subnet: 192.168.1.0 netmask: 255.255.255.0 {
+			range 192.168.1.20 192.168.1.30
+			option domain-name-servers server.unixmen.local;
+			option domain-name "unixmen.local";
+			option routers 192.168.1.1;
+			option bradcast-address 192.168.1.255;
+			default-lease-time 60;
+			max-lease-time 60;
+		}
+
+4. After making changes to the configuration files , save them and start the DHCP server by typing the command-
+				sudo service isc-dhcp-server start
+
+After this connect to the client via ethernet cable.
+Make sure that the network settings are selected to DHCP at the client's site.
+Now type the command ifconfig at terminal at client's site.
+You will notice that the ip assigned to client is in between the range we defined for the DHCP server.
+You can check for the exact process running at the background by checking system log file.
+
