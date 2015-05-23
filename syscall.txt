@@ -1,0 +1,98 @@
+STEPS TO MAKE A SYSTEM CALL:
+
+1) Create a directory hello in the kernel source directory:   
+    
+    --mkdir hello
+    --cd hello
+
+2) Create a “hello.c” file in this folder and add the definition 
+	of the system call to it as given below (you can use any text editor ).
+	
+	--gedit hello.c
+
+	hello.c
+	--------
+
+
+		#include <linux/kernel.h>
+		asmlinkage sys_hello(void)
+		{
+			printk("Hello World\n");	
+			return 0;
+		}
+
+3) Create a “Makefile” in the hello folder and  add the given line into it.
+	
+	--gedit Makefile
+		obj-­y  :=hello.o 
+
+	This is to ensure that the hello.c file is compiled and included in the kernel source code.
+	
+4) Change back into the linux-3.16 folder and open Makefile
+
+		--gedit Makefile
+
+		Goto line:  
+
+			“core-y += kernel/ mm/ fs/ ipc/ security/crypto/block/ “
+		Change this to: 
+
+			“kernel/ mm/ fs/ ipc/ security/ crypto/ block/ hello/“ 
+
+	This is to tell the compiler that the source files of our new system call (sys_hello()) 
+	are in present in the hello directory.
+
+5) If your system is a 64 bit system you will need to alter the syscall_64.tbl file else syscall_32.tbl.
+
+		--cd arch/x86/syscalls
+		--gedit syscall_64.tbl
+	
+		Add the following line in the end of the file :-
+		545    i386    hello    sys_hello
+		
+		545 – It is the number of the system call . It should be one plus the number of the last system call.. 
+		This has to be noted down to make the system call in the userspace program.
+
+6) cd  include/linux/
+	gedit syscalls.h
+
+	Add the following line to the end of the file but before #endif statement .
+	asmlinkage long sys_hello(void);
+
+	This defines the prototype of the function in our system call.”asmlinkage is the key word to indicate all the parameters    are available in the stack
+	
+7) Now compile the linux source code.
+
+							
+							 		TO TEST CODE
+							 		------------
+
+
+* Create a “hello.c” program in your home folder and type in the In the following code:
+		
+		#include <linux/kernel.h>
+		#include <stdio.h>
+		#include <unistd.h>
+		#include <sys/syscall.h>
+		int main()
+		{
+			long int r = syscall(545);
+			printf(“System call sys_hello returned %ld\n”,r);
+			return 0;  
+		}
+
+* Now compile this program using the following command.
+		
+		--gcc hello.c
+	
+	If all goes well you will not have any errors else, rectify the errors. Now run the program using the following command.
+		
+		--./a.out
+	
+	You will see the following line getting printed in the 
+	terminal if all the steps were followed correctly.
+		
+		“System call sys_hello returned 0“
+
+	Now to check the message of the kernel you can run the following command.
+		--dmesg 	
