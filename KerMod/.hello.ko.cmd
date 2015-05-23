@@ -1,0 +1,1 @@
+cmd_/home/iamsachin/Desktop/Kermod/hello.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/iamsachin/Desktop/Kermod/hello.ko /home/iamsachin/Desktop/Kermod/hello.o /home/iamsachin/Desktop/Kermod/hello.mod.o
