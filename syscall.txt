@@ -59,13 +59,14 @@ STEPS TO MAKE A SYSTEM CALL:
 	Add the following line to the end of the file but before #endif statement .
 	asmlinkage long sys_hello(void);
 
-	This defines the prototype of the function in our system call.”asmlinkage is the key word to indicate all the parameters    are available in the stack
+	This defines the prototype of the function in our system call.”asmlinkage is the 
+	key word to indicate all the parameters    are available in the stack
 	
 7) Now compile the linux source code.
 
 							
-							 		TO TEST CODE
-							 		------------
+						TO TEST CODE
+				 		------------
 
 
 * Create a “hello.c” program in your home folder and type in the In the following code:
@@ -85,7 +86,8 @@ STEPS TO MAKE A SYSTEM CALL:
 		
 		--gcc hello.c
 	
-	If all goes well you will not have any errors else, rectify the errors. Now run the program using the following command.
+	If all goes well you will not have any errors else, rectify the errors. 
+	Now run the program using the following command.
 		
 		--./a.out
 	
