@@ -1,0 +1,47 @@
+Steps :
+
+1)Install the following :
+
+	apt-get install postfix
+	apt-get install dovecot-common dovecot-pop3d dovecot-imapd
+	apt-get install mailutils
+
+                             	OR (one line)
+
+	apt-get install postfix dovecot-common dovecot-pop3d dovecot-imapd mailutils
+
+
+2) Open a terminal and then add user by typing :
+	
+		adduser username
+			
+			and then type password
+
+3) Now open new tab (Ctrl+Shift+T)
+
+4) Type :
+		
+		su newusername
+
+			and then type password.
+
+5) Now You have two tabs. In first tab type :
+
+		echo "message" | mail -s "subject" username@localhost
+
+6) In the second tab simply type :
+		
+		mail 
+
+
+			HOW TO SEND MESSAGE TO OUR EMAIL 
+			--------------------------------
+
+* Make sure your internet connection allows you to send spam to your mail.
+
+* Now simply type :
+		
+		echo "message"	| mail -s "subject" your_email_id
+
+* Now Check your Spam folder in your mail.
+ 
