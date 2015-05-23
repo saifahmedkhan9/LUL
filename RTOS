@@ -36,7 +36,7 @@ Steps :
 Note: Here we directly install the precompiled binary file of RTOS. Therefore no need to downlaod patch.
 
 1)Open /etc/apt/sources.list file :
-          sudo gedit /etc/apt/sources.txt
+          sudo gedit /etc/apt/sources.list
           
   and add the below two files manually:
       
