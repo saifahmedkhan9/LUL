@@ -1,0 +1,42 @@
+Steps to implement RAID on VM-Ware :
+
+1)Firstly divide the hard disk space into 4 parts each of 1Gb.
+
+2)Start the VM and then run :
+			'sudo fdisk -l' 	to see the hard disks mount point.(eg. sda,sdb,sdc).
+
+3)Now install the mdadm :
+	sudo apt-get install mdadm
+
+4)Now to Create raid 5 device with these partitions execute the following command
+
+		mdadm --create /dev/md0 -–level=5 –raid-disk=4 /dev/sda /dev/sdb /dev/sdc /dev/sdd.
+
+	Here sda,sdb,sdc,sdd are the Hard disk mount point.
+
+5)Now format this newly created md0 raid device
+	mke2fs –j /dev/md0 
+
+6)To use this device you must have specify mount point. 
+	we are going to use this raid device on /data directory. 
+	So create a /data directory and mount md0 on it.
+
+	mkdir /data
+	mount /dev/md0 /data
+
+7) Verify that all raid partition which we have created are working properly and in active state :
+	mdadm -–detail /dev/md0
+
+8)Now assume that one hard disk form raid device gets fail. This can be done by mdadm command with --fail options. Verify data 	it should be safe :
+    mdadm /dev/md0 --fail /dev/sdb
+
+9)you can verify fail device status via mdadm commands with -- detail switch also
+    mdadm --detail /dev/md0
+
+10)Now remove faulty devices
+     mdadm /dev/md0 --remove /dev/sdb
+
+11)Now add the device again 
+    mdadm /dev/md0 --add /dev/sdb
+
+

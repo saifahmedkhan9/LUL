@@ -5,5 +5,7 @@
 1. How to Compile Kernel.
 2. How to make Modules.
 3. How to make BootLoader.
+4. RTOS
+5. RAID
 
 

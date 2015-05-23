@@ -1,0 +1,53 @@
+There are two methods to implement that :
+
+1) Using PATCH
+------------------
+
+Steps :
+
+1.Download the linux tar file from kernel.org
+
+2.Download the patch corresponding to the linux distribution version from kernel.org
+
+3.now run the 
+	tar xJvf linuxfilename
+
+4.copy the patch in the linux folder
+
+5. then run
+	zcat patchname|patch -p1	(when patch is in gzip format)
+	bzcat patchname|patch -p1	(when patch is in bzip format)
+
+6.make menuconfig
+
+7.make -j 8
+
+8.make modules
+
+9.sudo make modules_install
+
+10.sudo make install
+
+11.reboot the system
+
+
+2)WITHOUT USING PATCH
+-----------------------
+Note: Here we directly install the precompiled binary file of RTOS. Therefore no need to downlaod patch.
+
+1)Open /etc/apt/sources.list file :
+          sudo gedit /etc/apt/sources.txt
+          
+  and add the below two files manually:
+      
+      deb http://ppa.launchpad.net/abogani/realtime/ubuntu precise main
+      deb-src http://ppa.launchpad.net/abogani/realtime/ubuntu precise main
+      
+2)Now Run Update command :
+    sudo apt-get update
+    
+3)Now simply install the precompiled RTOS using:
+        sudo apt-get install linux-realtime
+        
+4)Reboot the system.
+      
