@@ -44,9 +44,4 @@ Steps :
 		echo "message"	| mail -s "subject" your_email_id
 
 * Now Check your Spam folder in your mail.
-
-
-PS: Things to look into in case things don't work:
-* sudo gedit /etc/postfix/main.cf
-* sudo service postfix restart
  

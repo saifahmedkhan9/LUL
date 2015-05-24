@@ -1,0 +1,33 @@
+Step One—Install vsftpd
+
+	You can quickly install vsftpd on your virtual private server in the command line:
+
+		sudo apt-get install vsftpd
+
+	Once the file finishes downloading, the VSFTP will be on your droplet. Generally speaking, it is already configured with a reasonable amount of security. However, it does provide access on your VPS to anonymous users.
+
+Step Two—Configure vsftpd
+
+	Once vsftpd is installed, you can adjust the configuration.
+
+	Open up the configuration file:
+
+	sudo nano /etc/vsftpd.conf
+
+	The biggest change you need to make is to switch the Anonymous_enable from YES to NO:
+
+	anonymous_enable=NO
+
+	Prior to this change, vsftpd allowed anonymous, unidentified users to access the server's files. This is useful if you are seeking to distribute information widely, but may be considered a serious security issue in most other cases.
+
+	After that, uncomment the local_enable option, changing it to yes and, additionally, allow the user to write to the directory.
+
+	local_enable=YES
+
+	write_enable=YES
+
+	Finish up by uncommenting command to chroot_local_user. When this line is set to Yes, all the local users will be jailed within their chroot and will be denied access to any other part of the server.
+
+	chroot_local_user=YES
+
+	Save and Exit that file.
